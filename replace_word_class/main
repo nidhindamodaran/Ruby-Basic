@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require_relative 'file_handl'
+require_relative 'replacer'
+begin
+file_obj = File_handl.new("file_test")
+result = Replacer.new(file_obj).call
+puts result
+rescue Interrupt
+    puts "\nDo you want to exit ?"
+    opt = gets.chomp
+    if opt!='n'
+      abort
+    else
+      retry
+    end
+end
